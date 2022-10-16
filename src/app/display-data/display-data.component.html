@@ -1,0 +1,66 @@
+<div class="card" >
+
+    <div class="card-body">
+      <h4 class="card-title d-flex justify-content-center">{{value}}</h4>
+      <h5 class="card-title d-flex justify-content-center">{{time |date:'medium'}}</h5>
+
+      <div class="row mt-3">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail3">Betslip Selection</label>
+                <select class="form-control"  [(ngModel)]="bet_Builder">
+                    <option value="">Select option
+                       </option>
+                    <option value="{{market.MarketId}}" *ngFor="let market of getMarketList">{{market.MarketName}} </option>
+                   
+                </select>
+            </div>
+        </div> 
+    
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="exampleInputEmail3">Leg</label>
+                <select class="form-control"  [(ngModel)]="leg">
+                    <option value="">Select option
+                       </option>
+                       <option value="{{market.selectionId}}" *ngFor="let market of legSelectData">{{market.selectionValue}} </option>
+               
+              
+                
+                </select>
+            </div>
+        </div> 
+      </div>
+  
+      <a  class="btn btn-primary mt-4" (click)="updateData()">Submit</a>
+    </div>
+  </div>
+
+
+  <div class="card mt-3" style="margin-left:40px ; margin-right:40px ; background-color: #eee;">
+    <table class="table mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Pick</th>
+            <th scope="col">Market</th>
+            <th scope="col">Sub market</th>
+            <th scope="col">Outcome</th>
+            <th scope="col">Key stat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor ='let market of marketValueData ; let i = index'>
+            <th scope="row">{{i+1}}</th>
+            <td >{{market.Market}}</td>
+            <td  ></td>
+            <td>{{market.Selection}}</td>
+            <td>{{market.RTB}}</td>
+          </tr>
+    
+          </tbody>
+          </table>
+  </div>
+
+  <div class="div" style="margin-left:40px">
+   <h4><b>Bet Builder odds: {{TotalOdds}}</b></h4>
+  </div>

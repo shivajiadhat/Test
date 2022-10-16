@@ -1,0 +1,31 @@
+<div id="divTop" class="row mt-4 d-flex justify-content-center">
+    <div id="navbar" class="card" style="width:200px ;"  (click)="check(time)" *ngFor="let time of dates" >{{time}}</div>
+</div>
+
+
+<div class="card mt-4" style="margin-left:40px ; margin-right:40px ; background-color: #eee;">
+
+  <div class="card-body">
+    <table class="table mt-4 " >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">League</th>
+          <th scope="col">Match</th>
+          <th scope="col">Kick off</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor ='let football of datefilterData'>
+          <th scope="row">{{football.Country}}</th>
+          <td >{{football.LeagueName}}</td>
+          <td id="match" (click)="nextpage(football.MatchName ,football.KickOffUtc,football.MatchId)" style="color:blue ;">{{football.MatchName}}</td>
+          <td>{{football.KickOffUtc | date:'medium'}}</td>
+        </tr>
+  
+        </tbody>
+        </table>
+  </div>
+</div>
+
+
